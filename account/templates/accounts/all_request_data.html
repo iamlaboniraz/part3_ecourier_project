@@ -1,0 +1,54 @@
+{% extends 'base.html' %}
+{% load bootstrap3 %}
+{% block content %}
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+}
+
+td, th {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px;
+}
+
+tr:nth-child(even) {
+    background-color: green;
+}
+h2{
+  color: red;
+}
+</style>
+</head>
+<body>
+<h2>{{x}} people send request for ordering. Please see:</h2>
+username:{{user.username}}
+<table>
+  <tr>
+    <th>From Location</th>
+    <th>To Location</th>
+    <th>Product Typet</th>
+    <th>Date</th>
+    <th>Edit</th>
+
+  </tr>
+{% for i in list %}
+  <tr>
+    <td>{{i.from_location}}</td>
+    <td>{{i.to_location}}</td>
+    <td>{{i.product_type}}</td>
+    <td>{{i.Date}}</td>
+    <td>ID-{{i.id}}<a class="btn btn-info" href="{% url 'accounts:DeliveryDetail' id=i.pk%}"">{{user.username}} Detail View</a>
+    <!-- <td><a class="btn btn-info"href="{% url 'accounts:driver_list'%}">Search Driver</a> -->
+      <a class="btn btn-info"href="#">Send</a></td>
+  </tr>
+  {% endfor %}
+</table>
+</body>
+</html>
+{% endblock %}

@@ -1,0 +1,51 @@
+{% extends 'base.html' %}
+{% block content %}
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+  table {
+      font-family: arial, sans-serif;
+      border-collapse: collapse;
+      width: 80%;
+  }
+
+  td, th {
+      border: 1px solid #dddddd;
+      text-align: left;
+      padding: 8px;
+  }
+
+  tr:nth-child(even) {
+      background-color: green;
+  }
+  h2{
+    color: red;
+  }
+</style>
+</head>
+<body>
+
+<br>
+<div class="container">
+<h1>Driver List Here :</h1>
+
+<table>
+<tr>
+  <th>user</th>
+  <th>status</th>
+  <th>Requset</th>
+</tr>
+{% for driver_list in driver_list %}
+<tr>
+  <td>{{ driver_list.user }}</td>
+  <td>{{ driver_list.status }}</td>
+  <td><a class="btn btn-info"href="{% url 'account:edit' id=driver_list.pk %}">Send</a></td>
+</tr>
+{% endfor %}
+</table>
+</div>
+{% endblock%}
+
+</body>
+</html>

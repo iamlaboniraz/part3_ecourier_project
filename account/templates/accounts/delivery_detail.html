@@ -85,6 +85,7 @@ html {
 <br>
 
 <div class="row">
+    <form action="" method="post">
   <div class="column">
     <div class="card">
       <!-- <img src="/w3images/team1.jpg" alt="Jane" style="width:100%"> -->
@@ -93,12 +94,16 @@ html {
         <p class="title">From Location: {{object.from_location}}</p>
         <p class="title">To Location: {{object.to_location}}</p>
         <p>Product Type is : {{object.product_type}}</p>
-        <a href="#"><button class="button">Send</button></a>
-        <a href="#"><button class="button">Reject</button></a>
+
+          <input type="hidden" name="object" value="{{ object.id }}">
+          <input type="hidden" name="user" value="{{ user.id }}">
+        <a href="#"><button type="submit" name="send" class="button">Send</button></a>
+        <a href="#"><button type="submit" name="reject" class="button">Reject</button></a>
 
       </div>
     </div>
   </div>
+        </form>
   </div>
 </body>
 </html>
